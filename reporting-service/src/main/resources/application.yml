@@ -1,0 +1,36 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: reporting-service
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/order_db
+    username: ros_user
+    password: ros_password
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        default_schema: reporting
+        hbm2ddl.create_namespaces: true
+
+rabbitmq:
+  host: localhost
+  exchange:
+    name: ros.order.exchange
+  queue:
+    name: ros.order.reporting.queue
+  routing:
+    key: order.created
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'health,info'

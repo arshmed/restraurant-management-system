@@ -1,0 +1,10 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gateway-service
+
+app:
+  jwt:
+    secret: 3irx3Hu3A6VHJBzS0eGweEwRLIuP21KMnjOzjqNzPzQ=

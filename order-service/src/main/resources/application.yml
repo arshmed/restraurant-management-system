@@ -1,0 +1,43 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: order-service
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/order_db
+    username: ros_user
+    password: ros_password
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+rabbitmq:
+  host: localhost
+  exchange:
+    name: ros.order.exchange
+  queue:
+    name: ros.order.reporting.queue
+  routing:
+    key: order.created
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'health,info'
+
+services:
+  restaurant:
+    url: "http://localhost:8081/api/v1/restaurants"
+
+app:
+  jwt:
+    secret: 2429fb09e0c7e7908a72ba46346ff719890caa4405596d24cf3a6040226b5be342a7a2db

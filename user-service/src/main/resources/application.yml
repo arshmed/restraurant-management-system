@@ -1,0 +1,27 @@
+server:
+  port: 8084
+
+spring:
+  application:
+    name: user-service
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/order_db
+    username: ros_user
+    password: ros_password
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        default_schema: security
+        hbm2ddl.create_namespaces: true
+
+app:
+  jwt:
+    secret: 3irx3Hu3A6VHJBzS0eGweEwRLIuP21KMnjOzjqNzPzQ=
+    expiration-ms: 86400000

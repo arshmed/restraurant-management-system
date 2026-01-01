@@ -1,0 +1,23 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: restaurant-service
+
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: restaurant_db
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'health,info'
+
+app:
+  jwt:
+    secret: 2429fb09e0c7e7908a72ba46346ff719890caa4405596d24cf3a6040226b5be342a7a2db
+    expiration-ms: 86400000
