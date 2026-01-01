@@ -4,8 +4,8 @@
 
 ## 🍽️ Restaurant Management System – Microservices Architecture
 
-A modern, cloud-native **Restaurant Management System** built with **Spring Boot Microservices**.  
-This project demonstrates real-world enterprise patterns such as centralized configuration, service discovery, API gateway routing, JWT security, asynchronous communication, and containerized deployment.
+A modern, **Restaurant Management System** built with **Spring Boot Microservices**.  
+This project demonstrates real-world enterprise patterns such as  API gateway routing, JWT security, asynchronous communication, and containerized deployment.
 
 The goal of this repository is to showcase **clean architecture**, **scalable microservices**, and **production-ready Spring Cloud practices**.
 
@@ -14,8 +14,6 @@ The goal of this repository is to showcase **clean architecture**, **scalable mi
 ## ✨ Key Features
 
 ✅ **Microservices-based Design** – Each business domain runs as an independent Spring Boot service  
-✅ **Centralized Configuration** – Configuration management via Spring Cloud Config Server  
-✅ **Service Discovery** – Dynamic service registration and lookup using Netflix Eureka  
 ✅ **API Gateway** – Single entry point using Spring Cloud Gateway  
 ✅ **JWT Authentication & Authorization** – Secure, stateless access control with Spring Security  
 ✅ **Polyglot Persistence** – PostgreSQL and MongoDB used where appropriate  
@@ -39,9 +37,7 @@ graph TD
         RabbitMQ[(RabbitMQ)]
     end
 
-    subgraph "Spring Cloud Services"
-        ConfigServer(Config Server)
-        DiscoveryService(Eureka Server)
+    subgraph "Services"
         APIGateway(API Gateway)
         UserService(User Service)
         RestaurantService(Restaurant Service)
@@ -54,18 +50,6 @@ graph TD
     APIGateway --> UserService
     APIGateway --> RestaurantService
     APIGateway --> OrderService
-
-    UserService -.-> ConfigServer
-    RestaurantService -.-> ConfigServer
-    OrderService -.-> ConfigServer
-    ReportingService -.-> ConfigServer
-    APIGateway -.-> ConfigServer
-
-    UserService <-->|Registers| DiscoveryService
-    RestaurantService <-->|Registers| DiscoveryService
-    OrderService <-->|Registers| DiscoveryService
-    ReportingService <-->|Registers| DiscoveryService
-    APIGateway <-->|Discovers| DiscoveryService
 
     UserService --> PostgreSQL
     RestaurantService --> PostgreSQL
@@ -83,7 +67,6 @@ graph TD
 |--------|--------------|
 | **Backend** | Java 17, Spring Boot 3.x, Spring Web |
 | **Security** | Spring Security, JWT |
-| **Spring Cloud** | Config Server, Netflix Eureka, Cloud Gateway, OpenFeign |
 | **Databases** | PostgreSQL, MongoDB |
 | **Caching** | Redis |
 | **Messaging** | RabbitMQ |
